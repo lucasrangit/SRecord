@@ -5,6 +5,8 @@ before_install:
   - brew update
   - brew upgrade libtool
   - brew install libgcrypt
+  - echo $PATH
+  - which libtool
 script:
   - ./configure --prefix="$PWD/root/openocd"
   - make
