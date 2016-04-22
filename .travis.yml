@@ -1,0 +1,9 @@
+os:
+  - osx
+language: cpp
+before_install:
+  - brew update
+script:
+  - ./configure --prefix="$PWD/root/openocd"
+  - make
+  - make install
