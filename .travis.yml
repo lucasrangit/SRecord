@@ -3,7 +3,8 @@ os:
 language: cpp
 before_install:
   - brew update
-  - brew install libgcrypt libtool
+  - brew upgrade libtool
+  - brew install libgcrypt
 script:
   - ./configure --prefix="$PWD/root/openocd"
   - make
