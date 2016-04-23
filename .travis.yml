@@ -32,3 +32,5 @@ script:
   - install_name_tool -change /usr/local/opt/libgpg-error/lib/libgpg-error.0.dylib "@executable_path/libgpg-error.0.dylib" root/bin/srec_info
   - chmod -w root/bin/*.dylib
   - otool -L root/bin/*
+  - tar -cvjSf srecord-1.64.tar.bz2 root/bin
+  - hexdump srecord-1.64.tar.bz2
