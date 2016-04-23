@@ -14,13 +14,21 @@ script:
   - cp /usr/local/opt/libgcrypt/lib/libgcrypt.20.dylib root/bin/.
   - cp /usr/local/opt/libgpg-error/lib/libgpg-error.0.dylib root/bin/.
   - otool -L root/bin/*
+  - chmod +w root/openocd/bin/*.dylib
+  - install_name_tool -id libsrecord.0.dylib root/bin/libsrecord.0.dylib
+  - install_name_tool -id libgcrypt.20.dylib root/bin/libgcrypt.20.dylib
+  - install_name_tool -id libgpg-error.0.dylib root/bin/libgpg-error.0.dylib
+  - install_name_tool -change /usr/local/opt/libgpg-error/lib/libgpg-error.0.dylib "@executable_path/libgpg-error.0.dylib" root/bin/libgcrypt.20.dylib
+  - install_name_tool -change /usr/local/opt/libgpg-error/lib/libgpg-error.0.dylib "@executable_path/libgpg-error.0.dylib" root/bin/libsrecord.0.dylib
+  - install_name_tool -change /usr/local/opt/libgcrypt/lib/libgcrypt.20.dylib "@executable_path/libgcrypt.20.dylib" root/bin/libsrecord.0.dylib
   - install_name_tool -change /Users/travis/build/sandeepmistry/SRecord/root/lib/libsrecord.0.dylib "@executable_path/libsrecord.0.dylib" root/bin/srec_cat
   - install_name_tool -change /Users/travis/build/sandeepmistry/SRecord/root/lib/libsrecord.0.dylib "@executable_path/libsrecord.0.dylib" root/bin/srec_cmp
   - install_name_tool -change /Users/travis/build/sandeepmistry/SRecord/root/lib/libsrecord.0.dylib "@executable_path/libsrecord.0.dylib" root/bin/srec_info
   - install_name_tool -change /usr/local/opt/libgcrypt/lib/libgcrypt.20.dylib "@executable_path/libgcrypt.20.dylib" root/bin/srec_cat
   - install_name_tool -change /usr/local/opt/libgcrypt/lib/libgcrypt.20.dylib "@executable_path/libgcrypt.20.dylib" root/bin/srec_cmp
   - install_name_tool -change /usr/local/opt/libgcrypt/lib/libgcrypt.20.dylib "@executable_path/libgcrypt.20.dylib" root/bin/srec_info
-  - install_name_tool -change /usr/local/opt/libgcrypt/lib/libgpg-error.0.dylib "@executable_path/libgpg-error.0.dylib" root/bin/srec_cat
-  - install_name_tool -change /usr/local/opt/libgcrypt/lib/libgpg-error.0.dylib "@executable_path/libgpg-error.0.dylib" root/bin/srec_cmp
-  - install_name_tool -change /usr/local/opt/libgcrypt/lib/libgpg-error.0.dylib "@executable_path/libgpg-error.0.dylib" root/bin/srec_info
+  - install_name_tool -change /usr/local/opt/libgpg-error/lib/libgpg-error.0.dylib "@executable_path/libgpg-error.0.dylib" root/bin/srec_cat
+  - install_name_tool -change /usr/local/opt/libgpg-error/lib/libgpg-error.0.dylib "@executable_path/libgpg-error.0.dylib" root/bin/srec_cmp
+  - install_name_tool -change /usr/local/opt/libgpg-error/lib/libgpg-error.0.dylib "@executable_path/libgpg-error.0.dylib" root/bin/srec_info
+  - chmod -w root/openocd/bin/*.dylib
   - otool -L root/bin/*
