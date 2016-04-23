@@ -10,4 +10,6 @@ script:
   - ./configure --prefix="$PWD/root"
   - make
   - make install
-  - find root/.
+  - otool -L root/bin/srec_cat
+  - otool -L root/bin/srec_cmp
+  - otool -L root/bin/srec_info
