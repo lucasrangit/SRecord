@@ -4,7 +4,7 @@ language: cpp
 before_install:
   - brew update
   - brew upgrade libtool boost
-  - brew install libgcrypt
+  - brew install libgcrypt ghostscript
 script:
   - export LIBTOOL=glibtool
   - ./configure --prefix="$PWD/root"
