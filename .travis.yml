@@ -7,7 +7,9 @@ before_install:
   - brew install libgcrypt
   - echo $PATH
   - which libtool
+  - which glibtool
 script:
+  - export LIBTOOL=glibtool
   - ./configure --prefix="$PWD/root/openocd"
   - make
   - make install
