@@ -3,13 +3,11 @@ os:
 language: cpp
 before_install:
   - brew update
-  - brew upgrade libtool
+  - brew upgrade libtool boost
   - brew install libgcrypt
-  - echo $PATH
-  - which libtool
-  - which glibtool
 script:
   - export LIBTOOL=glibtool
-  - ./configure --prefix="$PWD/root/openocd"
+  - ./configure --prefix="$PWD/root"
   - make
   - make install
+  - find root/.
