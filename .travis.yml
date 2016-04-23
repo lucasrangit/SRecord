@@ -33,4 +33,4 @@ script:
   - chmod -w root/bin/*.dylib
   - otool -L root/bin/*
   - tar -cvjSf srecord-1.64.tar.bz2 root/bin
-  - hexdump srecord-1.64.tar.bz2
+  - hexdump -ve '1/1 "%.2x"' srecord-1.64.tar.bz2
